@@ -27,7 +27,7 @@
 -include device/samsung/d2-common/BoardConfigCommon.mk
 
 # Kernel
-TARGET_KERNEL_CONFIG         := cyanogen_express_defconfig
+TARGET_KERNEL_CONFIG         := cyanogenmod_express_defconfig
 TARGET_KERNEL_VARIANT_CONFIG :=
 
 # Asserts
