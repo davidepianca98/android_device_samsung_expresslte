@@ -23,12 +23,9 @@
 # inherit from the proprietary version
 -include vendor/samsung/express/BoardConfigVendor.mk
 
-# inherit from common d2
--include device/samsung/d2-common/BoardConfigCommon.mk
-
 # Kernel
-TARGET_KERNEL_CONFIG         := cyanogenmod_express_defconfig
-TARGET_KERNEL_VARIANT_CONFIG :=
+TARGET_KERNEL_SOURCE := kernel/samsung/express
+TARGET_KERNEL_CONFIG := cyanogenmod_express_defconfig
 
 # Asserts
 TARGET_OTA_ASSERT_DEVICE := express,GT-I8730
@@ -53,7 +50,7 @@ WIFI_DRIVER_FW_PATH_P2P     :=
 BOARD_HAVE_SAMSUNG_WIFI     :=
 
 # bluetooth
-BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := device/samsung/express
+BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := device/samsung/express/bluetooth
 BOARD_BLUEDROID_VENDOR_CONF :=
 BOARD_BLUETOOTH_USES_HCIATTACH_PROPERTY :=
 BOARD_HAVE_BLUETOOTH_BCM :=
