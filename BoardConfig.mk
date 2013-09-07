@@ -1,65 +1,29 @@
-# Copyright (C) 2013 The CyanogenMod Project
-#
-# Licensed under the Apache License, Version 2.0 (the "License");
-# you may not use this file except in compliance with the License.
-# You may obtain a copy of the License at
-#
-#      http://www.apache.org/licenses/LICENSE-2.0
-#
-# Unless required by applicable law or agreed to in writing, software
-# distributed under the License is distributed on an "AS IS" BASIS,
-# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-# See the License for the specific language governing permissions and
-# limitations under the License.
-
-#
-# This file sets variables that control the way modules are built
-# thorughout the system. It should not be used to conditionally
-# disable makefiles (the proper mechanism to control what gets
-# included in a build is to use PRODUCT_PACKAGES in a product
-# definition file).
-#
+USE_CAMERA_STUB := true
 
 # inherit from the proprietary version
 -include vendor/samsung/express/BoardConfigVendor.mk
 
-# Kernel
-TARGET_KERNEL_SOURCE := kernel/samsung/express
-TARGET_KERNEL_CONFIG := cyanogenmod_express_defconfig
+TARGET_ARCH := arm
+TARGET_NO_BOOTLOADER := true
+TARGET_BOARD_PLATFORM := unknown
+TARGET_CPU_ABI := armeabi-v7a
+TARGET_CPU_ABI2 := armeabi
+TARGET_ARCH_VARIANT := armv7-a-neon
+ARCH_ARM_HAVE_TLS_REGISTER := true
 
-# Asserts
-TARGET_OTA_ASSERT_DEVICE := express,GT-I8730
-#TARGET_BOARD_INFO_FILE ?= device/samsung/express/board-info.txt
+TARGET_BOOTLOADER_BOARD_NAME := express
 
-# Insert contents of file near end of updater-script
-TARGET_RELEASETOOL_OTA_FROM_TARGET_SCRIPT := ./build/tools/releasetools/ota_from_target_files -e ./device/samsung/express/installer_extra
+BOARD_KERNEL_CMDLINE := console=null androidboot.hardware=qcom user_debug=31
+BOARD_KERNEL_BASE := 0x80200000
+BOARD_KERNEL_PAGESIZE := 2048
 
-# Wifi
-BOARD_WLAN_DEVICE := qcwcn
-BOARD_WPA_SUPPLICANT_PRIVATE_LIB := lib_driver_cmd_qcwcn
-BOARD_HOSTAPD_PRIVATE_LIB := lib_driver_cmd_qcwcn
-BOARD_HAS_QCOM_WLAN := true
-WIFI_DRIVER_MODULE_PATH     := "/system/lib/modules/prima_wlan.ko"
-WIFI_DRIVER_FW_PATH_PARAM   := "/sys/module/prima_wlan/parameters/fwpath"
-WIFI_DRIVER_MODULE_NAME     := "prima_wlan"
-WIFI_DRIVER_MODULE_ARG      :=
-WIFI_DRIVER_MODULE_AP_ARG   :=
-WIFI_DRIVER_FW_PATH_STA     :=
-WIFI_DRIVER_FW_PATH_AP      :=
-WIFI_DRIVER_FW_PATH_P2P     :=
-BOARD_HAVE_SAMSUNG_WIFI     :=
+# fix this up by examining /proc/mtd on a running device
+BOARD_BOOTIMAGE_PARTITION_SIZE := 0x105c0000
+BOARD_RECOVERYIMAGE_PARTITION_SIZE := 0x105c0000
+BOARD_SYSTEMIMAGE_PARTITION_SIZE := 0x105c0000
+BOARD_USERDATAIMAGE_PARTITION_SIZE := 0x105c0000
+BOARD_FLASH_BLOCK_SIZE := 131072
 
-# bluetooth
-BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := device/samsung/express/bluetooth
-BOARD_BLUEDROID_VENDOR_CONF :=
-BOARD_BLUETOOTH_USES_HCIATTACH_PROPERTY :=
-BOARD_HAVE_BLUETOOTH_BCM :=
-BOARD_HAVE_BLUETOOTH_QCOM := true
-BLUETOOTH_HCI_USE_MCT := true
+TARGET_PREBUILT_KERNEL := device/samsung/express/kernel
 
-# camera hax
-TARGET_PROVIDES_CAMERA_HAL := true
-COMMON_GLOBAL_CFLAGS += -DDISABLE_HW_ID_MATCH_CHECK
-
-# sensors
-BOARD_USE_LEGACY_SENSORS_FUSION := false
+BOARD_HAS_NO_SELECT_BUTTON := true
