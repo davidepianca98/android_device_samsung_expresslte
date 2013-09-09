@@ -1,50 +1,65 @@
-USE_CAMERA_STUB := true
+# inherit from common msm8930
+-include device/samsung/msm8930-common/BoardConfigCommon.mk
 
-# inherit from the proprietary version
--include vendor/samsung/express/BoardConfigVendor.mk
-
-TARGET_ARCH := arm
-TARGET_NO_BOOTLOADER := true
-TARGET_BOARD_PLATFORM := unknown
-TARGET_CPU_ABI := armeabi-v7a
-TARGET_CPU_ABI2 := armeabi
-TARGET_ARCH_VARIANT := armv7-a-neon
-ARCH_ARM_HAVE_TLS_REGISTER := true
-
-TARGET_BOOTLOADER_BOARD_NAME := express
-
-BOARD_KERNEL_CMDLINE := console=null androidboot.hardware=qcom user_debug=31
-BOARD_KERNEL_BASE := 0x80200000
-BOARD_KERNEL_PAGESIZE := 2048
-
-# fix this up by examining /proc/mtd on a running device
-BOARD_BOOTIMAGE_PARTITION_SIZE := 0x105c0000
-BOARD_RECOVERYIMAGE_PARTITION_SIZE := 0x105c0000
-BOARD_SYSTEMIMAGE_PARTITION_SIZE := 0x105c0000
-BOARD_USERDATAIMAGE_PARTITION_SIZE := 0x105c0000
-BOARD_FLASH_BLOCK_SIZE := 131072
+TARGET_SPECIFIC_HEADER_PATH := device/samsung/express/include
 
 # Kernel
-TARGET_PREBUILT_KERNEL := device/samsung/express/kernel
+BOARD_KERNEL_CMDLINE         := androidboot.hardware=qcom user_debug=31 zcache
+BOARD_KERNEL_BASE            := 0x80200000
+BOARD_MKBOOTIMG_ARGS         := --ramdisk_offset 0x02000000
+BOARD_KERNEL_PAGESIZE        := 2048
+TARGET_KERNEL_SOURCE         := kernel/samsung/msm8930-common
+TARGET_KERNEL_CONFIG         := cyanogenmod_express_defconfig
+ifeq ($(HAVE_SELINUX),true)
+TARGET_KERNEL_SELINUX_CONFIG := selinux_defconfig
+endif
 
-# Asserts
-TARGET_OTA_ASSERT_DEVICE := express,I8730,GT-I8730
+TARGET_BOOTLOADER_BOARD_NAME := MSM8960
 
-# Wifi
-BOARD_WLAN_DEVICE := qcwcn
-BOARD_WPA_SUPPLICANT_PRIVATE_LIB := lib_driver_cmd_qcwcn
-BOARD_HOSTAPD_PRIVATE_LIB := lib_driver_cmd_qcwcn
-BOARD_HAS_QCOM_WLAN := true
-WIFI_DRIVER_MODULE_PATH     := "/system/lib/modules/prima_wlan.ko"
-WIFI_DRIVER_FW_PATH_PARAM   := "/sys/module/prima_wlan/parameters/fwpath"
-WIFI_DRIVER_MODULE_NAME     := "prima_wlan"
+# Recovery
+BOARD_CUSTOM_GRAPHICS := device/samsung/express/recovery/graphics.c
+BOARD_CUSTOM_RECOVERY_KEYMAPPING := device/samsung/express/recovery/recovery_keys.c
+BOARD_USES_MMCUTILS := true
+BOARD_HAS_LARGE_FILESYSTEM := true
+BOARD_HAS_NO_MISC_PARTITION := true
+TARGET_RECOVERY_FSTAB := device/samsung/express/recovery.fstab
+TARGET_RECOVERY_INITRC := device/samsung/express/rootdir/init.recovery.rc
 
-# bluetooth
+TARGET_USERIMAGES_USE_EXT4 := true
+BOARD_BOOTIMAGE_PARTITION_SIZE := 10485760
+BOARD_RECOVERYIMAGE_PARTITION_SIZE := 10485760
+BOARD_SYSTEMIMAGE_PARTITION_SIZE := 1572864000
+BOARD_USERDATAIMAGE_PARTITION_SIZE := 5821676544
+BOARD_CACHEIMAGE_PARTITION_SIZE := 209715200
+BOARD_FLASH_BLOCK_SIZE := 131072
+
+# Bluetooth
 BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := device/samsung/express/bluetooth
-BOARD_HAVE_BLUETOOTH_QCOM := true
-QCOM_BT_USE_SMD_TTY := true
 
-# Backlight notification
-BOARD_USE_BLN := true
+# NFC
+BOARD_NFC_HAL_SUFFIX := msm8960
 
-BOARD_HAS_NO_SELECT_BUTTON := true
+# Disable initlogo, Samsungs framebuffer is weird
+TARGET_NO_INITLOGO := true
+
+# Use seperate speakerphone device
+BOARD_USES_SEPERATED_VOICE_SPEAKER := true
+
+# Use seperate devices for VOIP
+BOARD_USES_SEPERATED_VOIP := true
+
+# Use USB Dock Audio
+BOARD_HAVE_DOCK_USBAUDIO := true
+
+
+# Inherit from the proprietary version
+-include vendor/samsung/express/BoardConfigVendor.mk
+
+# Assert
+TARGET_OTA_ASSERT_DEVICE := express,i8730,GT-I8730
+
+# Kernel
+TARGET_KERNEL_VARIANT_CONFIG := cyanogenmod_express_defconfig
+
+# NFC
+BOARD_HAVE_NFC := true
