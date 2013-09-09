@@ -134,9 +134,6 @@ ADDITIONAL_DEFAULT_PROPERTIES += \
 # call common msm8930
 $(call inherit-product, device/samsung/msm8930-common/msm8930.mk)
 
-# call dalvik heap config
-$(call inherit-product, frameworks/native/build/phone-hdpi-1024-dalvik-heap.mk)
-
 # NFC permissions
 PRODUCT_COPY_FILES += \
     frameworks/base/nfc-extras/com.android.nfc_extras.xml:system/etc/permissions/com.android.nfc_extras.xml \
