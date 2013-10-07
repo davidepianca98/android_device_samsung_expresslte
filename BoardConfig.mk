@@ -10,19 +10,16 @@ BOARD_MKBOOTIMG_ARGS         := --ramdisk_offset 0x02000000
 BOARD_KERNEL_PAGESIZE        := 2048
 TARGET_KERNEL_SOURCE         := kernel/samsung/msm8930-common
 TARGET_KERNEL_CONFIG         := cyanogenmod_express_defconfig
-ifeq ($(HAVE_SELINUX),true)
 TARGET_KERNEL_SELINUX_CONFIG := selinux_defconfig
-endif
 
 TARGET_BOOTLOADER_BOARD_NAME := MSM8960
 
 # Recovery
-BOARD_CUSTOM_GRAPHICS := device/samsung/express/recovery/graphics.c
-BOARD_CUSTOM_RECOVERY_KEYMAPPING := device/samsung/express/recovery/recovery_keys.c
+BOARD_CUSTOM_GRAPHICS := ../../../device/samsung/express/recovery/graphics.c
+BOARD_CUSTOM_RECOVERY_KEYMAPPING := ../../device/samsung/exoress/recovery/recovery_keys.c
 BOARD_USES_MMCUTILS := true
-BOARD_HAS_LARGE_FILESYSTEM := true
 BOARD_HAS_NO_MISC_PARTITION := true
-TARGET_RECOVERY_FSTAB := device/samsung/express/recovery.fstab
+TARGET_RECOVERY_FSTAB := device/samsung/express/rootdir/fstab.qcom
 TARGET_RECOVERY_INITRC := device/samsung/express/rootdir/init.recovery.rc
 
 TARGET_USERIMAGES_USE_EXT4 := true
@@ -51,15 +48,11 @@ BOARD_USES_SEPERATED_VOIP := true
 # Use USB Dock Audio
 BOARD_HAVE_DOCK_USBAUDIO := true
 
-
-# Inherit from the proprietary version
--include vendor/samsung/express/BoardConfigVendor.mk
-
 # Assert
 TARGET_OTA_ASSERT_DEVICE := express,i8730,GT-I8730
 
 # Kernel
-TARGET_KERNEL_VARIANT_CONFIG := cyanogenmod_express_defconfig
+TARGET_KERNEL_VARIANT_CONFIG := msm8930_express_eur_lte_defconfig
 
 # NFC
 BOARD_HAVE_NFC := true
