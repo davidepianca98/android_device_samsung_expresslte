@@ -12,7 +12,7 @@ TARGET_KERNEL_SOURCE         := kernel/samsung/msm8930-common
 TARGET_KERNEL_CONFIG         := cyanogenmod_express_defconfig
 TARGET_KERNEL_SELINUX_CONFIG := selinux_defconfig
 
-TARGET_BOOTLOADER_BOARD_NAME := MSM8960
+TARGET_BOOTLOADER_BOARD_NAME := MSM8930
 
 # Recovery
 BOARD_CUSTOM_GRAPHICS := ../../../device/samsung/express/recovery/graphics.c
@@ -34,7 +34,7 @@ BOARD_FLASH_BLOCK_SIZE := 131072
 BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := device/samsung/express/bluetooth
 
 # NFC
-BOARD_NFC_HAL_SUFFIX := msm8960
+BOARD_NFC_HAL_SUFFIX := msm8930
 
 # Disable initlogo, Samsungs framebuffer is weird
 TARGET_NO_INITLOGO := true
