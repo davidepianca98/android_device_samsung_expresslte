@@ -1,7 +1,7 @@
 $(call inherit-product, $(SRC_TARGET_DIR)/product/languages_full.mk)
 
 # Also get non-open-source specific aspects if available
-$(call inherit-product-if-exists, vendor/samsung/express/express-vendor.mk)
+$(call inherit-product-if-exists, vendor/samsung/serrano-common/serrano-common-vendor.mk)
 
 # Overlays
 DEVICE_PACKAGE_OVERLAYS += device/samsung/express/overlay

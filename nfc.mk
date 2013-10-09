@@ -13,7 +13,7 @@ PRODUCT_PACKAGES += \
     com.android.nfc_extras
 
 # NFCEE access control + configuration
-NFCEE_ACCESS_PATH := device/samsung/serrano-common/nfc/nfcee_access.xml
+NFCEE_ACCESS_PATH := device/samsung/express/nfc/nfcee_access.xml
 PRODUCT_COPY_FILES += \
     $(NFCEE_ACCESS_PATH):system/etc/nfcee_access.xml \
     $(LOCAL_PATH)/nfc/libnfc-brcm.conf:system/etc/libnfc-brcm.conf
