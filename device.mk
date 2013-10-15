@@ -4,7 +4,7 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/languages_full.mk)
 $(call inherit-product-if-exists, vendor/samsung/serrano-common/serrano-common-vendor.mk)
 
 # Overlays
-DEVICE_PACKAGE_OVERLAYS += device/samsung/express/overlay
+DEVICE_PACKAGE_OVERLAYS += device/samsung/expresslte/overlay
 
 # Device uses high-density artwork where available
 PRODUCT_AAPT_CONFIG := normal hdpi
@@ -137,7 +137,7 @@ ADDITIONAL_DEFAULT_PROPERTIES += \
 # call common msm8930
 $(call inherit-product, device/samsung/msm8930-common/msm8930.mk)
 
-$(call inherit-product, device/samsung/express/nfc.mk)
+$(call inherit-product, device/samsung/expresslte/nfc.mk)
 
 # Permissions
 PRODUCT_COPY_FILES += \
