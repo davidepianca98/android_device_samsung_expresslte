@@ -6,8 +6,7 @@ TARGET_SPECIFIC_HEADER_PATH := device/samsung/expresslte/include
 # Kernel
 BOARD_KERNEL_CMDLINE         := console=null androidboot.hardware=qcom user_debug=31
 BOARD_KERNEL_BASE            := 0x80200000
-BOARD_MKBOOTIMG_ARGS         := --ramdisk_offset 0x02000000
-BOARD_KERNEL_PAGESIZE        := 800
+BOARD_KERNEL_PAGESIZE        := 2048
 TARGET_PREBUILT_KERNEL       := device/samsung/expresslte/kernel
 #TARGET_KERNEL_SOURCE         := kernel/samsung/msm8930-common
 #TARGET_KERNEL_CONFIG         := cyanogen_serrano_defconfig
