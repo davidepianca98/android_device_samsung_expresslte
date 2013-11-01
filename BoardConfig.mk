@@ -7,10 +7,8 @@ TARGET_SPECIFIC_HEADER_PATH := device/samsung/expresslte/include
 BOARD_KERNEL_CMDLINE         := console=null androidboot.hardware=qcom user_debug=31
 BOARD_KERNEL_BASE            := 0x80200000
 BOARD_KERNEL_PAGESIZE        := 2048
-TARGET_PREBUILT_KERNEL       := device/samsung/expresslte/kernel
-#TARGET_KERNEL_SOURCE         := kernel/samsung/msm8930-common
-#TARGET_KERNEL_CONFIG         := cyanogen_serrano_defconfig
-#TARGET_KERNEL_SELINUX_CONFIG := selinux_defconfig
+TARGET_KERNEL_SOURCE         := kernel/samsung/expresslte
+TARGET_KERNEL_CONFIG         := msm8930_express_defconfig
 
 TARGET_BOOTLOADER_BOARD_NAME := MSM8960
 
@@ -50,9 +48,6 @@ BOARD_HAVE_DOCK_USBAUDIO := true
 
 # Assert
 TARGET_OTA_ASSERT_DEVICE := expresslte
-
-# Kernel
-#TARGET_KERNEL_VARIANT_CONFIG := msm8930_serrano_eur_lte_defconfig
 
 # NFC
 BOARD_HAVE_NFC := true
