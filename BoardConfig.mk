@@ -8,7 +8,7 @@ BOARD_KERNEL_CMDLINE         := console=null androidboot.hardware=qcom user_debu
 BOARD_KERNEL_BASE            := 0x80200000
 BOARD_KERNEL_PAGESIZE        := 2048
 TARGET_KERNEL_SOURCE         := kernel/samsung/msm8930-common
-TARGET_KERNEL_CONFIG         := msm8930_express_defconfig
+TARGET_KERNEL_CONFIG         := cyanogen_express_defconfig
 TARGET_KERNEL_VARIANT_CONFIG := msm8930_express_eur_lte_defconfig
 
 TARGET_BOOTLOADER_BOARD_NAME := MSM8960
