@@ -3,6 +3,8 @@
 
 TARGET_SPECIFIC_HEADER_PATH := device/samsung/expresslte/include
 
+TARGET_CPU_VARIANT_CPU := cortex-a9
+
 # Kernel
 BOARD_KERNEL_CMDLINE         := console=null androidboot.hardware=qcom user_debug=31
 BOARD_KERNEL_BASE            := 0x80200000
