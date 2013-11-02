@@ -15,8 +15,6 @@ TARGET_KERNEL_VARIANT_CONFIG := msm8930_express_eur_lte_defconfig
 
 TARGET_BOOTLOADER_BOARD_NAME := MSM8960
 
-TARGET_CPU_VARIANT := cortex-a9
-
 # Recovery
 BOARD_CUSTOM_GRAPHICS := ../../../device/samsung/expresslte/recovery/graphics.c
 BOARD_CUSTOM_RECOVERY_KEYMAPPING := ../../device/samsung/expresslte/recovery/recovery_keys.c
