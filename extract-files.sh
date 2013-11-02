@@ -2,7 +2,7 @@
 
 set -e
 
-export DEVICE=express
+export DEVICE=expresslte
 export VENDOR=samsung
 
 if [ $# -eq 0 ]; then
