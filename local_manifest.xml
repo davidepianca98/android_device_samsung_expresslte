@@ -5,11 +5,5 @@
 <project path="device/samsung/msm8930-common" name="CyanogenMod/android_device_samsung_msm8930-common" revision="cm-10.2" remote="github" />
 <project path="kernel/samsung/msm8930-common" name="KINGbabasula/android_kernel_samsung_msm8930-common" revision="cm-10.2" remote="github" />
 <project path="vendor/samsung" name="arco/proprietary_vendor_samsung" revision="cm-10.2" remote="github" />
-<project path="hardware/qcom/display-legacy" name="arco/android_hardware_qcom_display-legacy" revision="cm-10.2" remote="github" />
-<project path="hardware/qcom/media-legacy" name="arco/android_hardware_qcom_media-legacy" revision="cm-10.2" remote="github" />
-<project path="hardware/qcom/audio-caf" name="arco/android_hardware_qcom_audio" revision="jellybean" remote="github" />
 <project path="vendor/qcom/opensource/fm" name="arco/android_vendor_qcom_opensource_fm" revision="cm-10.2" remote="github" />
-<remove-project name="CyanogenMod/android_hardware_qcom_display-caf" />
-<remove-project name="CyanogenMod/android_hardware_qcom_media-caf" />
-<remove-project name="CyanogenMod/android_hardware_qcom_audio-caf" />
 </manifest>
