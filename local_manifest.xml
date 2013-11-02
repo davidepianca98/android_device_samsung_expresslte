@@ -2,8 +2,8 @@
 <manifest>
 <project path="device/samsung/expresslte" name="KINGbabasula/android_device_samsung_expresslte" revision="cm-10.2" remote="github" />
 <project path="device/samsung/qcom-common" name="CyanogenMod/android_device_samsung_qcom-common" revision="cm-10.2" remote="github" />
-<project path="device/samsung/msm8930-common" name="arco/android_device_samsung_msm8930-common" revision="cm-10.1" remote="github" />
-<project path="kernel/samsung/msm8930-common" name="KINGbabasula/android_kernel_samsung_msm8930-common" revision="cm-10.1" remote="github" />
+<project path="device/samsung/msm8930-common" name="arco/android_device_samsung_msm8930-common" revision="cm-10.2" remote="github" />
+<project path="kernel/samsung/msm8930-common" name="KINGbabasula/android_kernel_samsung_msm8930-common" revision="cm-10.2" remote="github" />
 <project path="vendor/samsung" name="arco/proprietary_vendor_samsung" revision="cm-10.2" remote="github" />
 <project path="hardware/qcom/display-legacy" name="arco/android_hardware_qcom_display-legacy" revision="cm-10.2" remote="github" />
 <project path="hardware/qcom/media-legacy" name="arco/android_hardware_qcom_media-legacy" revision="cm-10.2" remote="github" />
