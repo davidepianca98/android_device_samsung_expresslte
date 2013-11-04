@@ -1,16 +1,10 @@
-# Also get non-open-source specific aspects if available
-$(call inherit-product-if-exists, vendor/samsung/express/express-vendor.mk)
-
-# Common overlays
-DEVICE_PACKAGE_OVERLAYS += device/samsung/express/overlay-gsm
-
 $(call inherit-product, $(SRC_TARGET_DIR)/product/languages_full.mk)
 
 # Also get non-open-source specific aspects if available
-$(call inherit-product-if-exists, vendor/samsung/express/express-vendor.mk)
+$(call inherit-product-if-exists, vendor/samsung/serrano-common/serrano-common-vendor.mk)
 
 # Overlays
-DEVICE_PACKAGE_OVERLAYS += device/samsung/express/overlay
+DEVICE_PACKAGE_OVERLAYS += device/samsung/expresslte/overlay
 
 # Device uses high-density artwork where available
 PRODUCT_AAPT_CONFIG := normal hdpi
@@ -28,13 +22,17 @@ PRODUCT_COPY_FILES += \
 # Media Profile
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/media/media_profiles.xml:system/etc/media_profiles.xml
-	
+
+# Expose Irda feature
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/rootdir/system/etc/permissions/com.sec.feature.irda_service.xml:system/etc/permissions/com.sec.feature.irda_service.xml
+
 # GPS
 PRODUCT_PACKAGES += \
     gps.msm8960 \
     gps.conf \
     sap.conf
-	
+
 # Keylayouts
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/keylayout/atmel_mxt_ts.kl:system/usr/keylayout/atmel_mxt_ts.kl \
@@ -49,8 +47,9 @@ PRODUCT_COPY_FILES += \
 
 # Ramdisk
 PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/rootdir/charger:root/charger \
+    $(LOCAL_PATH)/rootdir/charger:recovery/root/charger \
     $(LOCAL_PATH)/rootdir/fstab.qcom:root/fstab.qcom \
-    $(LOCAL_PATH)/rootdir/fstab.qcom:recovery/root/fstab.qcom \
     $(LOCAL_PATH)/rootdir/lpm.rc:root/lpm.rc \
     $(LOCAL_PATH)/rootdir/lpm.rc:recovery/root/lpm.rc \
     $(LOCAL_PATH)/rootdir/init.carrier.rc:root/init.carrier.rc \
@@ -68,9 +67,9 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/rootdir/system/etc/init.qcom.modem_links.sh:system/etc/init.qcom.modem_links.sh \
     $(LOCAL_PATH)/rootdir/system/etc/init.qcom.wifi.sh:system/etc/init.qcom.wifi.sh
 
-# Vold configuration
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/vold.fstab:system/etc/vold.fstab
+    $(LOCAL_PATH)/rootdir/system/etc/wifi/p2p_supplicant_overlay.conf:system/etc/wifi/p2p_supplicant_overlay.conf \
+    $(LOCAL_PATH)/rootdir/system/etc/wifi/wpa_supplicant_overlay.conf:system/etc/wifi/wpa_supplicant_overlay.conf
 
 # Torch
 PRODUCT_PACKAGES += Torch
@@ -81,6 +80,9 @@ PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
 
 # Lights
 PRODUCT_PACKAGES += lights.msm8960
+
+# Irda
+PRODUCT_PACKAGES += irda.msm8960
 
 # QC Perf
 PRODUCT_PROPERTY_OVERRIDES += \
@@ -98,7 +100,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
     persist.radio.dont_use_dsd=true \
     persist.radio.apm_sim_not_pwdn=1 \
     ro.qualcomm.bt.hci_transport=smd \
-    ro.telephony.call_ring.multiple=0 \
     ro.sf.lcd_density=240 \
     ro.ril.transmitpower=true \
     ro.warmboot.capability=1 \
@@ -112,7 +113,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.use_data_netmgrd=true \
     lpa.decode=true \
     lpa.use-stagefright=true \
-    qcom.hw.aac.encoder=true \
     rild.libpath=/system/lib/libril-qc-qmi-1.so \
     persist.rild.nitz_plmn="" \
     persist.rild.nitz_long_ons_0="" \
@@ -125,7 +125,10 @@ PRODUCT_PROPERTY_OVERRIDES += \
     persist.rild.nitz_short_ons_3="" \
     ril.subscription.types=NV,RUIM \
     persist.gps.qmienabled=true \
-    persist.gps.qc_nlp_in_use=0
+    persist.gps.qc_nlp_in_use=0 \
+    persist.fuse_sdcard=true \
+    ro.vold.umsdirtyratio=50 \
+    ro.cwm.enable_key_repeat=true
 
 # For userdebug builds
 ADDITIONAL_DEFAULT_PROPERTIES += \
@@ -134,25 +137,7 @@ ADDITIONAL_DEFAULT_PROPERTIES += \
 # call common msm8930
 $(call inherit-product, device/samsung/msm8930-common/msm8930.mk)
 
-# NFC permissions
-PRODUCT_COPY_FILES += \
-    frameworks/base/nfc-extras/com.android.nfc_extras.xml:system/etc/permissions/com.android.nfc_extras.xml \
-    frameworks/native/data/etc/android.hardware.nfc.xml:system/etc/permissions/android.hardware.nfc.xml
-
-# NFC packages
-PRODUCT_PACKAGES += \
-    libnfc-nci \
-    libnfc_nci_jni \
-    nfc_nci.msm8960 \
-    NfcNci \
-    Tag \
-    com.android.nfc_extras
-
-# NFCEE access control + configuration
-NFCEE_ACCESS_PATH := device/samsung/express/nfc/nfcee_access.xml
-PRODUCT_COPY_FILES += \
-    $(NFCEE_ACCESS_PATH):system/etc/nfcee_access.xml \
-    $(LOCAL_PATH)/nfc/libnfc-brcm.conf:system/etc/libnfc-brcm.conf
+$(call inherit-product, device/samsung/expresslte/nfc.mk)
 
 # Permissions
 PRODUCT_COPY_FILES += \
