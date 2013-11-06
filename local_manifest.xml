@@ -6,4 +6,5 @@
 <project path="kernel/samsung/msm8930-common" name="CyanogenMod/android_kernel_samsung_msm8930-common" revision="cm-10.2" remote="github" />
 <project path="vendor/samsung" name="arco/proprietary_vendor_samsung" revision="cm-10.2" remote="github" />
 <project path="vendor/qcom/opensource/fm" name="arco/android_vendor_qcom_opensource_fm" revision="cm-10.2" remote="github" />
+<project path="hardware/samsung" name="CyanogenMod/android_hardware_samsung" revision="cm-10.2" remote="github" />
 </manifest>
